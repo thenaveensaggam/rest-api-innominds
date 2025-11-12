@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const apiRouter = require("./routes/apiRoute");
 const userRouter = require("./routes/userRoute");
 const appLogger = require("./middleware/appLogger");
+const connectToDB = require("./database/connection");
 
 const app = express();
 
@@ -32,6 +33,8 @@ const port = process.env.PORT;
 
 if (hostname && port) {
   app.listen(port, hostname, () => {
+    // connect to the database
+    connectToDB();
     console.log(`Server running at http://${hostname}:${port}/`);
   });
 }
