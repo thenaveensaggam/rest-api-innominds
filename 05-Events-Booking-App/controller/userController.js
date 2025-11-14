@@ -105,6 +105,15 @@ const loginUser = async (request, response) => {
 
 const getUserInfo = async (request, response) => {
   try {
+    const { id } = request.user;
+    const user = await UserTable.findById(id).select("-password");
+    if (!user) {
+      return response.status(400).json({ errors: [{ msg: "User not found" }] });
+    }
+    return response.status(200).json({
+      message: "User is found successfully",
+      data: user,
+    });
   } catch (error) {}
 };
 

@@ -5,6 +5,7 @@ const {
   getUserInfo,
 } = require("../controller/userController");
 const { body } = require("express-validator");
+const verifyToken = require("../middleware/tokenMiddleware");
 
 const router = express.Router();
 
@@ -48,6 +49,6 @@ router.post(
  * @access : PRIVATE
  * @fields : no-fields
  */
-router.post("/me", getUserInfo);
+router.get("/me", verifyToken, getUserInfo);
 
 module.exports = router;

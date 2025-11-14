@@ -29,8 +29,8 @@ const hostname = process.env.HOST_NAME;
 const port = process.env.PORT;
 
 if (hostname && port) {
-  app.listen(port, hostname, () => {
-    connectToDB();
+  app.listen(port, hostname, async () => {
+    await connectToDB();
     console.log(`Server running at http://${hostname}:${port}/`);
   });
 } else {

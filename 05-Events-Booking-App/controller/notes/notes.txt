@@ -1,0 +1,74 @@
+Events Booking App
+-------------------
+-> Install the packages 
+   -> npm install express cors bcryptjs dotenv express-validator gravatar jsonwebtoken mongoose nodemon
+   
+-> Mongo DB Configuration
+-------------------------
+-> Tables = users , events 
+
+-> users Table -> name, avatar, email, password, role, createdAt, updatedAt, id 
+-> events Table -> name, image, price, date, type, description, createdAt, updatedAt, id
+
+API's Configuration 
+-------------------
+/**
+ * @usage : Register a User
+ * @url : http://127.0.0.1:5000/users/register
+ * @method : POST
+ * @access : PUBLIC
+ * @fields : name , email , password
+ */
+
+/**
+ * @usage : Login a User
+ * @url : http://127.0.0.1:5000/users/login
+ * @method : POST
+ * @access : PUBLIC
+ * @fields : email , password
+ */
+ 
+/**
+ * @usage : Get a User
+ * @url : http://127.0.0.1:5000/users/me
+ * @method : GET
+ * @access : PRIVATE
+ * @fields : no-fields
+ */ 
+ 
+ /**
+ * @usage : Upload an event
+ * @url : http://127.0.0.1:5000/events/upload
+ * @method : POST
+ * @access : PRIVATE
+ * @fields : name, image, price, date, type, description
+ */
+ 
+ /**
+ * @usage : Get all Free Events
+ * @url : http://127.0.0.1:5000/events/free
+ * @method : GET
+ * @access : PUBLIC
+ * @fields : no-fields
+ */
+ 
+ /**
+ * @usage : Get all PAID Events
+ * @url : http://127.0.0.1:5000/events/paid
+ * @method : GET
+ * @access : PUBLIC
+ * @fields : no-fields
+ */
+ 
+ /**
+ * @usage : Get An Event by Id
+ * @url : http://127.0.0.1:5000/events/:eventId
+ * @method : GET
+ * @access : PUBLIC
+ * @fields : no-fields
+ */
+ 
+ 
+ 
+
+

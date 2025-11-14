@@ -5,6 +5,8 @@ const {
   getFreeEvents,
   getPaidEvents,
 } = require("../controller/eventController");
+const verifyToken = require("../middleware/tokenMiddleware");
+const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
 
@@ -15,7 +17,19 @@ const router = express.Router();
  * @access : PRIVATE
  * @fields : name, image, price, date, type, description
  */
-router.post("/upload", uploadEvent);
+router.post(
+  "/upload",
+  [
+    body("name").notEmpty().withMessage("Name is required"),
+    body("imageUrl").notEmpty().withMessage("ImageUrl is required"),
+    body("price").notEmpty().withMessage("Price is required"),
+    body("date").notEmpty().withMessage("Date is required"),
+    body("type").notEmpty().withMessage("Type is required"),
+    body("description").notEmpty().withMessage("Description is required"),
+  ],
+  verifyToken,
+  uploadEvent
+);
 
 /**
  * @usage : Get all Free Events
